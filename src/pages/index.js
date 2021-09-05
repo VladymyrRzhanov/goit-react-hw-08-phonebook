@@ -1,0 +1,1 @@
+export * as ContactsBookPage from './ContactsBookPage';

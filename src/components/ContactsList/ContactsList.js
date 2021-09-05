@@ -11,30 +11,29 @@ import { Container } from "./styles";
 const ContactsList = ({ contacts, onDelete }) => {
   const dispatch = useDispatch();
 
-
   useEffect(() => {
     dispatch(itemsOperations.fetchContacts())
   }, [dispatch]);
 
   return (
-  <Container>
-    <TransitionGroup component='ul'>
-    {contacts.map(({ id, name, number }) => (
-      <CSSTransition
-        key={id}
-        timeout={250}
-        classNames={slice}
-        unmountOnExit>
-        <ContactListItem
-          name={name}
-          number={number}
-          onDelete={() => onDelete(id)}
-        />
-      </CSSTransition>
-    ))}
-  </TransitionGroup>
-  </Container>
-)
+    <Container>
+      <TransitionGroup component='ul'>
+        {contacts.map(({ id, name, number }) => (
+          <CSSTransition
+            key={id}
+            timeout={250}
+            classNames={slice}
+            unmountOnExit>
+            <ContactListItem
+              name={name}
+              number={number}
+              onDelete={() => onDelete(id)}
+            />
+          </CSSTransition>
+        ))}
+      </TransitionGroup>
+    </Container>
+  );
 };
 
 ContactsList.propTypes = {

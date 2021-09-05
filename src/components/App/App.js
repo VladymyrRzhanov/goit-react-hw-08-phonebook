@@ -1,59 +1,44 @@
-import Form from 'components/Form';
+import { useEffect } from "react";
+import { useDispatch } from 'react-redux';
 import Section from 'components/Section';
-import ContactsList from 'components/ContactsList';
-import Filter from 'components/Filter';
-import { connect } from "react-redux";
-import { itemsSelectors } from "redux/contacts/items";
+import { Route, Switch } from 'react-router-dom';
+import { HomePage } from "pages/HomePage";
+import ContactsBookPage from "pages/ContactsBookPage";
+import {RegisterPage} from "pages/RegisterPage";
+import { LoginPage } from "pages/LoginPage";
+import * as authUserOperations from "redux/authUser/authUser-operations";
 // import s from './App.module.css';
-import slide from "transition/slide.module.css";
-import pop from "transition/pop.module.css";
-import { CSSTransition } from 'react-transition-group';
-import { Title, Subtitle } from "./styles";
-import { ContactsBookPage } from "pages/ContactsBookPage";
+import Header from "../Header";
 
-const App = ({contacts}) => {
-  console.log(contacts)
+const App = () => {
+  
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(authUserOperations.getCurrentUser())
+  }, [dispatch]);
+
   return (
     <>
+      <Header />
       <Section>
-        <CSSTransition
-          in={true}
-          appear={true}
-          classNames={slide}
-          timeout={500}
-        >
-          <Title>
-            Phonebook
-          </Title>
-        </CSSTransition>
-        {/* <Form /> */}
-      </Section>
-      <Section>
-        {/* <ContactsBookPage/> */}
-        <CSSTransition
-          in={contacts.length > 1}
-          classNames={pop}
-          timeout={500}
-          unmountOnExit
-        >
-          <Filter />
-        </CSSTransition>
-        <CSSTransition
-          in={!!contacts.length}
-          classNames={pop}
-          timeout={500}
-          unmountOnExit
-        >
-        <Subtitle>Contacts</Subtitle>
-          </CSSTransition>
-        <ContactsList />
+        <Switch>
+          <Route path='/' exact>
+            <HomePage />
+          </Route>
+          <Route path='/contacts'>
+            <ContactsBookPage />
+          </Route>
+          <Route path='/register'>
+            <RegisterPage />
+          </Route>
+          <Route path='/login'>
+            <LoginPage />
+          </Route>
+        </Switch>
       </Section>
     </>
   );
 };
 
-const mapStateToProps = state => ({
-  contacts: itemsSelectors.getItems(state)
-});
-
-export default connect(mapStateToProps)(App);
+export default App;

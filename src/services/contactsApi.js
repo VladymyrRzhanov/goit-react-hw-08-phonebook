@@ -1,16 +1,18 @@
 import axios from 'axios';
 
+// axios.defaults.baseURL='http://localhost:4040/contacts'
+
 export const fetchContactsApi = async () => {
-    const { data } = await axios.get('http://localhost:4040/contacts');
+    const { data } = await axios.get('/contacts');
     return data;
 }
 
 export const addContactApi = async (contact) => {
-    const { data } = await axios.post('http://localhost:4040/contacts', contact);
+    const { data } = await axios.post('/contacts', contact);
     return data;
 }
 
-export const deleteContactApi = async (id) => {
-    const { data } = await axios.delete(`http://localhost:4040/contacts/${id}`);
+export const deleteContactApi = async (contactId) => {
+    const { data } = await axios.delete(`/contacts/${contactId}`);
     return data;
 }

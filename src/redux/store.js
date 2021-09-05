@@ -11,6 +11,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import authUserReducer from "./authUser/authUser-reducer";
 import { contactsReducer } from "./contacts/contacts-reducer";
 
 const middleware = [
@@ -19,19 +20,19 @@ const middleware = [
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
   }),
-  logger,
+  // logger,
 ];
 
-const contactsPersistConfig = {
-  key: 'contacts',
+const authPersistConfig = {
+  key: 'auth',
   storage,
-  blacklist: ['filter'],
-};
+  whitelist: ['token']
+}
 
 export const store = configureStore({
   reducer: {
-    contacts: persistReducer(contactsPersistConfig, contactsReducer),
-      // contactsReducer
+    auth: persistReducer(authPersistConfig, authUserReducer),
+    contacts: contactsReducer
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',
