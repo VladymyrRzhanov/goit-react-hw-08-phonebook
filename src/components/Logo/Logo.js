@@ -1,15 +1,16 @@
-import { Link } from 'react-router-dom';
-import { Title, Icon, LogoContainer } from "./styles";
+import { Title, Icon, LogoContainer, CustomLink } from "./styles";
 
-const Logo = () => (
-    <Title>
-        <Link to='/'>
-            <LogoContainer>
-                <Icon />
-                Phonebook
-            </LogoContainer>
-        </Link>
-    </Title>
-);
+const Logo = () => {
+    return (
+        <Title>
+            <CustomLink to='/'>
+                <LogoContainer>
+                    <Icon />
+                    Phonebook
+                </LogoContainer>
+            </CustomLink>
+        </Title>
+    );
+};
 
 export default Logo;

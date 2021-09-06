@@ -7,7 +7,24 @@ justify-content: center;
 `;
 
 export const Button = styled.button`
-border-color: cadetblue;
 margin-left: 10px;
-cursor: pointer;
+    cursor: pointer;
+    background-color: rgb(51 147 216);
+    color: rgb(255 255 255);
+    padding: 7px 12px;
+    border-radius: 5px;
+    font-weight: 700;
+    border: none;
+    font-size: 16px;
 `;
+
+export const Image = styled.img`
+width: 40px;
+height: 40px;
+margin-right: 10px;
+`;
+
+export const WelcomeText = styled.p`
+font-weight:700;
+font-size: 16px;
+`

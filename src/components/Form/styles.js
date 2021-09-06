@@ -11,7 +11,7 @@ export const ContactForm = styled.form`
   width: 600px;
   padding: 20px;
   margin-bottom: 40px;
-  border: 1px solid black;
+  border: 1px solid rgb(161 161 161 / 50%);;
   box-shadow: 13px 13px 25px -5px rgba(34, 60, 80, 0.3);
 `;
 
@@ -43,7 +43,7 @@ export const Subtitle = styled.span`
 `;
 
 export const Button = styled.button`
-  background-color: rgb(0 214 0);
+  background-color: rgb(51 147 216);
   border-radius: 5px;
   cursor: pointer;
   transition: 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94);

@@ -1,18 +1,18 @@
 import { NavLink } from 'react-router-dom';
-import { List,Item } from "./styles";
+import { List,Item,CustomLink } from "./styles";
 
 const Auth = () => (
     <List>
         <Item>
-            <NavLink to='/register'>
+            <CustomLink to='/register' exact>
                 Register
-            </NavLink>
+            </CustomLink>
         
         </Item>
         <Item>
-            <NavLink to='/login'>
+            <CustomLink to='/login' exact>
                 Login
-            </NavLink>
+            </CustomLink>
         </Item>
     </List>
 );

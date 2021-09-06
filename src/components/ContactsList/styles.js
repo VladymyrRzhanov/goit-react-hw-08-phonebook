@@ -52,7 +52,7 @@ export const Button = styled.button`
   padding: 7px 10px;
   border: none;
   border-radius: 5px;
-  background-color: red;
+  background-color: rgb(51 147 216);
   cursor: pointer;
   color: #fff;
   font-weight: 700;

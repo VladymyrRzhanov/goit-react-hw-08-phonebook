@@ -10,8 +10,7 @@ export const ContactForm = styled.form`
   justify-content: center;
   width: 600px;
   padding: 20px;
-  margin-bottom: 40px;
-  border: 1px solid black;
+  border: 1px solid rgb(161 161 161 / 50%);
   box-shadow: 13px 13px 25px -5px rgba(34, 60, 80, 0.3);
 `;
 
