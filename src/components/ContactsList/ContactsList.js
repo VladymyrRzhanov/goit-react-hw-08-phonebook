@@ -27,6 +27,7 @@ const ContactsList = ({ contacts, onDelete }) => {
             <ContactListItem
               name={name}
               number={number}
+              id={id}
               onDelete={() => onDelete(id)}
             />
           </CSSTransition>

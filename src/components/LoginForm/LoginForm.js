@@ -1,25 +1,16 @@
 import React, { useState,  } from 'react';
 import { connect, useDispatch } from "react-redux";
 import * as authUserOperations from "redux/authUser/authUser-operations";
-// import { getUserName } from "redux/authUser/authUser-selector";
-// import Notification from "components/Notification";
-// import PropTypes from 'prop-types';
-// import alertTransition from "transition/alert.module.css";
 import { ReactComponent as AddIcon } from 'images/accept.svg';
-// import { CSSTransition } from 'react-transition-group';
 import { ContactForm, InputContainer, Subtitle, Input, Button, BtnText } from "./styles";
 
 const RegisterForm = ({users, onSubmit}) => {
     const dispatch = useDispatch();
-    // const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const handleInputChange = ({ target: { name, value } }) => {
         switch (name) {
-            // case 'name':
-            //     setName(value);
-            //     break;
             case 'email':
                 setEmail(value);
                 break;
@@ -33,8 +24,6 @@ const RegisterForm = ({users, onSubmit}) => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        // const user=JSON.stringify({ email, password })
-        // onSubmit(user)
         dispatch(authUserOperations.loginUser({ email, password }));
         reset();
     };
@@ -42,7 +31,6 @@ const RegisterForm = ({users, onSubmit}) => {
 
   const reset = () => {
     setEmail('');
-    // setEmail('');
     setPassword('');
   };
 
@@ -55,7 +43,6 @@ const RegisterForm = ({users, onSubmit}) => {
                     name="email"
                     value={email}
                     placeholder="Enter your email"
-                    // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                     title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
                     required
                     onChange={handleInputChange}
@@ -68,7 +55,6 @@ const RegisterForm = ({users, onSubmit}) => {
                     name="password"
                     value={password}
                     placeholder="Enter password"
-                    // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                     title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
                     required
                     onChange={handleInputChange}
@@ -78,10 +64,6 @@ const RegisterForm = ({users, onSubmit}) => {
         </ContactForm>
     );
 };
-
-// const mapStateToProps = state => ({
-//   users: getUserName(state)
-// })
 
 const mapDispatchToProps = dispatch => ({
   onSubmit: (user) => dispatch(authUserOperations.loginUser(user))

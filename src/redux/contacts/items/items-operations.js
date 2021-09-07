@@ -35,6 +35,16 @@ export const addContact = createAsyncThunk('contacts/addContact',
 //     }
 // };
 
+export const editContact = createAsyncThunk('contacts/editContact',
+    async ({ userId, name, number }) => {
+        // console.log(userId)
+        // const contact={name, number}
+        // console.log({name, number})
+        // console.log(number)
+        const data = await contactsApi.editContactApi(userId, { name, number });
+        return data;
+    });
+
 export const deleteContact = createAsyncThunk('contacts/deleteContact',
     async (id) => {
     await contactsApi.deleteContactApi(id);

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 600px;
+  width: 70%;
 `;
 
 export const Item = styled.li`
@@ -40,9 +40,34 @@ export const Data = styled.div`
   }
 `;
 
-export const Button = styled.button`
+export const BtnDelete = styled.button`
   position: absolute;
   right: 20px;
+  padding: 7px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(51 147 216);
+  cursor: pointer;
+  color: #fff;
+  font-weight: 700;
+  transition: 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  &:hover ~ ${Data} {
+    transform: scale(1.1);
+  }
+
+  &:hover ~ ${Data}::before {
+    transform: scaleX(1);
+  }
+`;
+
+export const BtnEdit = styled.button`
+  position: absolute;
+  right: 110px;
   padding: 7px 10px;
   border: none;
   border-radius: 5px;

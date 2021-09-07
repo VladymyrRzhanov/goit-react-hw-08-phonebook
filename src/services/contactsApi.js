@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-// axios.defaults.baseURL='http://localhost:4040/contacts'
-
 export const fetchContactsApi = async () => {
     const { data } = await axios.get('/contacts');
     return data;
@@ -9,6 +7,12 @@ export const fetchContactsApi = async () => {
 
 export const addContactApi = async (contact) => {
     const { data } = await axios.post('/contacts', contact);
+    return data;
+}
+
+export const editContactApi = async (contactId, editContact) => {
+    const { data } = await axios.patch(`/contacts/${contactId}`, editContact);
+    // console.log(data)
     return data;
 }
 

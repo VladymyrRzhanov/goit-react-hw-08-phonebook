@@ -1,5 +1,5 @@
 // import * as contactsActions from "./items-actions";
-import { fetchContacts, addContact, deleteContact } from './items-operations';
+import { fetchContacts, addContact, deleteContact, editContact } from './items-operations';
 import { createReducer } from '@reduxjs/toolkit';
 
 export const itemsReducer = createReducer([], {
@@ -7,7 +7,9 @@ export const itemsReducer = createReducer([], {
     
     [addContact.fulfilled]: ((state, { _, payload }) => [payload, ...state]),
     
-    [deleteContact.fulfilled]: (state, { _, payload }) => (state.filter(contact => contact.id !== payload))
+    [deleteContact.fulfilled]: (state, { _, payload }) => (state.filter(contact => contact.id !== payload)),
+
+    [editContact.fulfilled]: (state, { _, payload }) => (state.map(contact=> contact.id === payload.id ? payload : contact))
 });
 
 export const errorReducer = createReducer(null, {
