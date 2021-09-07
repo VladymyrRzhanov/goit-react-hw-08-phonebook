@@ -25,6 +25,6 @@ margin-right: 10px;
 `;
 
 export const WelcomeText = styled.p`
-font-weight:700;
+font-weight: 500;
 font-size: 16px;
 `

@@ -1,5 +1,5 @@
 import { useEffect, Suspense, lazy } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Section from 'components/Section';
 import { Switch } from 'react-router-dom';
 import * as authUserOperations from "redux/authUser/authUser-operations";
@@ -7,6 +7,8 @@ import { getIsCurrentUser } from "redux/authUser/authUser-selector";
 import Header from "../Header";
 import PrivateRoute from "../Routes/PrivateRoute";
 import PublicRoute from "../Routes/PublicRoute";
+import Loader from "../Loader";
+import Footer from "../Footer";
 
 const HomePage = lazy(() => import('../../pages/HomePage' /* webpackChunkName: "home-page" */));
 const ContactsBookPage = lazy(() => import('../../pages/ContactsBookPage' /* webpackChunkName: "contacts-page" */));
@@ -16,6 +18,7 @@ const LoginPage = lazy(() => import('../../pages/LoginPage' /* webpackChunkName:
 const App = () => {
   
   const dispatch = useDispatch();
+  const isCurrentUser = useSelector(getIsCurrentUser)
 
   useEffect(() => {
     dispatch(authUserOperations.getCurrentUser())
@@ -23,15 +26,15 @@ const App = () => {
 
   return (
     <>
-      {getIsCurrentUser && (
+      {isCurrentUser ? (<Loader />) : (
         <>
           <Header />
-          <Section>
-            <Suspense fallback={<h1>Loading ...</h1>}>
-              <Switch>
+          <Suspense fallback={<Loader />}>
+            <Switch>
                 <PublicRoute path='/' exact>
                   <HomePage />
                 </PublicRoute>
+              <Section>
                 <PrivateRoute path='/contacts' redirectTo='/login'>
                   <ContactsBookPage />
                 </PrivateRoute>
@@ -41,9 +44,10 @@ const App = () => {
                 <PublicRoute path='/login' restricted redirectTo='/contacts'>
                   <LoginPage />
                 </PublicRoute>
-              </Switch>
-            </Suspense>
-          </Section>
+              </Section>
+            </Switch>
+          </Suspense>
+          <Footer />
         </>
       )}
     </>

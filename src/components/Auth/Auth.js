@@ -1,4 +1,3 @@
-import { NavLink } from 'react-router-dom';
 import { List,Item,CustomLink } from "./styles";
 
 const Auth = () => (

@@ -45,6 +45,7 @@ export const Subtitle = styled.span`
 export const Button = styled.button`
   background-color: rgb(51 147 216);
   border-radius: 5px;
+  border: none;
   cursor: pointer;
   transition: 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
   display: flex;

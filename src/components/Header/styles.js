@@ -6,6 +6,7 @@ export const Main = styled.header`
     width: 100%;
     left: 0;
     top: 0;
+    flex: 0 0 auto;
 `;
 
 export const Container = styled.div`

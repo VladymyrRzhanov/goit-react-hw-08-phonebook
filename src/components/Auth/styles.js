@@ -9,12 +9,17 @@ justify-content: center;
 
 export const Item = styled.li`
 list-style: none;
-`
+padding: 10px;
+
+&:not(:last-child) {
+    margin-right: 30px;
+}
+`;
 
 export const CustomLink = styled(NavLink)`
 color:black;
 text-decoration: none;
-padding: 10px;
+padding: 10px 0;
 font-weight: 700;
 font-size: 20px;
 text-transform: uppercase;

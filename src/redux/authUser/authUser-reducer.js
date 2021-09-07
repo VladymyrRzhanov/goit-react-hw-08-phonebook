@@ -36,7 +36,7 @@ const authUserSlice = createSlice({
             state.isCurrentUser = false;
         },
          [authUserOperations.getCurrentUser.rejected](state) {
-            state.isCurrentUser = true;
+            state.isCurrentUser = false;
         },
     },
 });
