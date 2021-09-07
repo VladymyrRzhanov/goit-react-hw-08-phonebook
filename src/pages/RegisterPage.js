@@ -1,7 +1,10 @@
 import RegisterForm from "components/RegisterForm";
+import PageContainer from "components/PageContainer";
 
 const RegisterPage = () => (
-    <RegisterForm/>
-)
+    <PageContainer>
+        <RegisterForm />
+    </PageContainer>
+);
 
 export default RegisterPage;

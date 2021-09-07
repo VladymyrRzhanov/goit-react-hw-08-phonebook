@@ -1,7 +1,10 @@
-import LoginForm from "../components/LoginForm";
+import LoginForm from "components/LoginForm";
+import PageContainer from "components/PageContainer";
 
 const LoginPage = () => (
-    <LoginForm/>
-)
+    <PageContainer>
+        <LoginForm />
+    </PageContainer>
+);
 
 export default LoginPage;

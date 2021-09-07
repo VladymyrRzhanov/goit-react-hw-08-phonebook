@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { MainSection, Container } from "./styles";
+import { MainSection } from "./styles";
 
-
-const Section = ({ children }) => (
-  <MainSection>
-    <Container>{children}</Container>
-  </MainSection>
+const Section = ({children}) => (
+    <MainSection>
+        {children}
+    </MainSection>
 );
 
 Section.propTypes = {

@@ -1,7 +1,5 @@
-import { Title, Subtitle, HeroContainer, MainSection } from "./styles";
+import { Title, Subtitle, HeroContainer } from "./styles";
 const Hero = () => (
-    <MainSection>
-
     <HeroContainer>
         <Title>
             Manage information, rule the world!
@@ -10,7 +8,6 @@ const Hero = () => (
             Click. Create. Use it.
         </Subtitle>
     </HeroContainer>
-    </MainSection>
 );
 
 export default Hero;

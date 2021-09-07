@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import Form from "components/Form";
 import Filter from "components/Filter";
+import PageContainer from "components/PageContainer";
 import { itemsSelectors } from "redux/contacts/items";
 import ContactsList from "components/ContactsList";
 import { CSSTransition } from 'react-transition-group';
@@ -9,10 +10,9 @@ import pop from "transition/pop.module.css";
 
 
 const ContactsBookPage = ({ contacts }) => {
-  console.log(contacts)
 
     return (
-        <>
+        <PageContainer>
             <Form />
             <CSSTransition
                 in={contacts.length > 1}
@@ -31,7 +31,7 @@ const ContactsBookPage = ({ contacts }) => {
                 <Subtitle>Contacts</Subtitle>
             </CSSTransition>
             <ContactsList />
-        </>
+        </PageContainer>
     );
 };
 

@@ -34,7 +34,7 @@ export const Data = styled.div`
     left: 0;
     width: 100%;
     height: 4px;
-    background-color: red;    
+    background-color: rgb(51 147 216);    
     transform: scaleX(0);
     transition: 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
@@ -43,12 +43,6 @@ export const Data = styled.div`
 export const Button = styled.button`
   position: absolute;
   right: 20px;
-  /* background-image: "Cancel"; */
-  /* width: 30px;
-  height: 30px; */
-  /* background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain; */
   padding: 7px 10px;
   border: none;
   border-radius: 5px;
@@ -62,11 +56,11 @@ export const Button = styled.button`
     transform: scale(1.2);
   }
 
-  &:hover ~ Data {
+  &:hover ~ ${Data} {
     transform: scale(1.1);
   }
 
-  &:hover ~ Data::before {
+  &:hover ~ ${Data}::before {
     transform: scaleX(1);
   }
 `;

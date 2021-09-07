@@ -9,6 +9,7 @@ import PrivateRoute from "../Routes/PrivateRoute";
 import PublicRoute from "../Routes/PublicRoute";
 import Loader from "../Loader";
 import Footer from "../Footer";
+import Container from 'components/Container';
 
 const HomePage = lazy(() => import('../../pages/HomePage' /* webpackChunkName: "home-page" */));
 const ContactsBookPage = lazy(() => import('../../pages/ContactsBookPage' /* webpackChunkName: "contacts-page" */));
@@ -29,25 +30,27 @@ const App = () => {
       {isCurrentUser ? (<Loader />) : (
         <>
           <Header />
-          <Suspense fallback={<Loader />}>
-            <Switch>
-                <PublicRoute path='/' exact>
-                  <HomePage />
-                </PublicRoute>
-              <Section>
-                <PrivateRoute path='/contacts' redirectTo='/login'>
-                  <ContactsBookPage />
-                </PrivateRoute>
-                <PublicRoute path='/register' restricted>
-                  <RegisterPage />
-                </PublicRoute>
-                <PublicRoute path='/login' restricted redirectTo='/contacts'>
-                  <LoginPage />
-                </PublicRoute>
-              </Section>
-            </Switch>
-          </Suspense>
-          <Footer />
+              <Suspense fallback={<Loader />}>
+                <Switch>
+          <Section>
+            <Container>
+                  <PublicRoute path='/' exact>
+                    <HomePage />
+                  </PublicRoute>
+                  <PrivateRoute path='/contacts' redirectTo='/login'>
+                    <ContactsBookPage />
+                  </PrivateRoute>
+                  <PublicRoute path='/register' restricted>
+                    <RegisterPage />
+                  </PublicRoute>
+                  <PublicRoute path='/login' restricted redirectTo='/contacts'>
+                    <LoginPage />
+                  </PublicRoute>
+            </Container>
+          </Section>
+                </Switch>
+              </Suspense>
+              <Footer />
         </>
       )}
     </>
