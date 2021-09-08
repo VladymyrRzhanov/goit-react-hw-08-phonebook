@@ -3,10 +3,9 @@ import { useDispatch } from "react-redux";
 import { itemsOperations } from "redux/contacts/items";
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import EditIcon from '@material-ui/icons/Edit';
-import { ContactForm, Button, BtnText,StyledInputMask } from "./styles";
+import { ContactForm, Button, BtnText,StyledInputMask, CustomForm } from "./styles";
 
 const FormEdit = ({ userName, userNumber, userId, onClose }) => {
   const dispatch = useDispatch();
@@ -64,7 +63,7 @@ const FormEdit = ({ userName, userNumber, userId, onClose }) => {
 
   return (
     <ContactForm onSubmit={handleSubmit}>
-      <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
+      <CustomForm className={clsx(classes.margin)} variant="outlined">
         <TextField
           label="Name"
           type="text"
@@ -75,8 +74,8 @@ const FormEdit = ({ userName, userNumber, userId, onClose }) => {
           required
           onChange={handleInputChange}
         />
-      </FormControl>
-      <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
+      </CustomForm>
+      <CustomForm className={clsx(classes.margin)} variant="outlined">
         <TextField
           label="Phone"
           type="tel"
@@ -101,7 +100,7 @@ const FormEdit = ({ userName, userNumber, userId, onClose }) => {
           required
           variant="outlined"
           onChange={handleInputChange} />
-      </FormControl>
+      </CustomForm>
       <Button type="submit"><BtnText>Edit contact</BtnText><EditIcon width="32" height="32" /></Button>
     </ContactForm>
   );

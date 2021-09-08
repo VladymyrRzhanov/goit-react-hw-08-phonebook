@@ -1,4 +1,4 @@
-import { Title, Icon, LogoContainer, CustomLink } from "./styles";
+import { Title, Icon, LogoContainer, CustomLink,LogoText } from "./styles";
 
 const Logo = () => {
     return (
@@ -6,7 +6,9 @@ const Logo = () => {
             <CustomLink to='/'>
                 <LogoContainer>
                     <Icon />
-                    Home
+                    <LogoText>
+                        Home
+                    </LogoText>
                 </LogoContainer>
             </CustomLink>
         </Title>

@@ -6,10 +6,10 @@ import alertTransition from "transition/alert.module.css";
 import { CSSTransition } from 'react-transition-group';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import FormControl from '@material-ui/core/FormControl';
+// import CustomForm from '@material-ui/core/CustomForm';
 import TextField from '@material-ui/core/TextField';
 import AddIcon from '@material-ui/icons/Add';
-import { ContactForm,  StyledInputMask, Button, BtnText } from "./styles";
+import { ContactForm,  StyledInputMask, Button, BtnText, CustomForm } from "./styles";
 
 const Form = () => {
   const [name, setName] = useState('');
@@ -83,7 +83,7 @@ const Form = () => {
         />
       </CSSTransition>
 
-      <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
+      <CustomForm className={clsx(classes.margin)} variant="outlined">
         <TextField
           label="Name"
           type="text"
@@ -94,8 +94,8 @@ const Form = () => {
           required
           onChange={handleInputChange}
         />
-      </FormControl>
-      <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
+      </CustomForm>
+      <CustomForm className={clsx(classes.margin)} variant="outlined">
         <TextField
           label="Phone"
           type="tel"
@@ -120,7 +120,7 @@ const Form = () => {
           required
           variant="outlined"
           onChange={handleInputChange} />
-      </FormControl>
+      </CustomForm>
       <Button type="submit"><BtnText>Add contact</BtnText><AddIcon width="32" height="32" /></Button>
     </ContactForm>
   );

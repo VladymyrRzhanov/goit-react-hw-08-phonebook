@@ -6,9 +6,12 @@ export const CustomLink = styled(Link)`
 color:black;
 text-decoration: none;
 font-weight: 700;
-font-size: 20px;
+font-size: 14px;
 text-transform: uppercase;
 
+@media screen and (min-width: 768px) {
+    font-size: 20px;
+  }
 `
 export const LogoContainer = styled.div`
 display: flex;
@@ -21,13 +24,24 @@ justify-content: center;
 }
 `
 
+export const LogoText = styled.p`
+display: none;
+@media screen and (min-width: 768px) {
+    display: inline;
+  }
+`;
+
 export const Title = styled.h1`
 color: black;
 `;
 
 export const Icon = styled(PhonebookIcon)`
-width: 50px;
-height: 50px;
-margin-right: 20px;
+width: 30px;
+height: 30px;
 color: black;
-`
+@media screen and (min-width: 768px) {
+    width: 50px;
+    height: 50px;
+    margin-right:20px;
+  }
+`;

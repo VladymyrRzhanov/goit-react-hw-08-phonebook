@@ -7,12 +7,11 @@ import IconButton from '@material-ui/core/IconButton';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import InputLabel from '@material-ui/core/InputLabel';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
-import { ContactForm, Button, BtnText } from "./styles";
+import { ContactForm, Button, BtnText, CustomForm } from "./styles";
 
 const LodinForm = () => {
     const dispatch = useDispatch();
@@ -73,7 +72,7 @@ const LodinForm = () => {
 
     return (
         <ContactForm onSubmit={handleSubmit}>
-                <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
+                <CustomForm className={clsx(classes.margin)} variant="outlined">
                     <TextField
                         id="outlined-basic"
                         type="email"
@@ -84,8 +83,8 @@ const LodinForm = () => {
                         required
                         onChange={handleInputChange}
                     />
-                </FormControl>
-                <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
+                </CustomForm>
+                <CustomForm className={clsx(classes.margin)} variant="outlined">
                     <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
                     <OutlinedInput
                         id="outlined-adornment-password"
@@ -108,7 +107,7 @@ const LodinForm = () => {
                         }
                         labelWidth={70}
                     />
-                </FormControl>
+                </CustomForm>
             <Button type="submit"><BtnText>Log in</BtnText><ArrowForwardIcon width="32" height="32" /></Button>
         </ContactForm>
     );

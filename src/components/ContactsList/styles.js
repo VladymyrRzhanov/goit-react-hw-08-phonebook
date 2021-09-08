@@ -3,7 +3,11 @@ import EditIcon from '@material-ui/icons/Edit';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
 export const Container = styled.div`
-  width: 70%;
+  width: 100%;
+
+  @media screen and (min-width: 768px) {
+    width: 70%;
+  }
 `;
 
 export const Item = styled.li`
@@ -19,15 +23,24 @@ export const Item = styled.li`
 `;
 
 export const ItemContainer = styled.div`
-  width: 70%;
+  width: 50%;
   padding: 20px 50px;
+  
+  @media screen and (min-width: 768px) {
+      width: 70%;
+  }
 `;
 
 export const Data = styled.div`
   position: relative;
+  font-size: 12px;
   transition: 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
   display: flex;
   justify-content: space-between;
+  
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+  }
 
   &::before {
     content: "";
@@ -46,11 +59,13 @@ export const BtnDelete = styled(DeleteForeverIcon)`
   position: absolute;
   right: 20px;
   cursor: pointer;
+  bottom: 50%;
+  transform: translateY(50%);
   color: rgb(51 147 216);
   transition: 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
   &:hover {
-    transform: scale(1.2);
+    transform: scale(1.2) translateY(50%);
   }
 
   &:hover ~ ${Data} {
@@ -66,11 +81,13 @@ export const BtnEdit = styled(EditIcon)`
   position: absolute;
   right: 60px;
   color: rgb(51 147 216);
+  bottom: 50%;
+  transform: translateY(50%);
   cursor: pointer;
   transition: 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
   &:hover {
-    transform: scale(1.2);
+    transform: scale(1.2) translateY(50%);
   }
 
   &:hover ~ ${Data} {
