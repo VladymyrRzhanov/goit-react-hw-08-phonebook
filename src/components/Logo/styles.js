@@ -8,6 +8,7 @@ text-decoration: none;
 font-weight: 700;
 font-size: 20px;
 text-transform: uppercase;
+
 `
 export const LogoContainer = styled.div`
 display: flex;

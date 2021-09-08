@@ -1,29 +1,43 @@
 import React from 'react';
-import { connect } from "react-redux";
-import { getFilter } from "redux/contacts/filter/filter-selector";
+import { useDispatch } from "react-redux";
 import { filterContacts } from "redux/contacts/filter/filter-actions";
-import PropTypes from 'prop-types'
-// import s from "./Filter.module.css";
-import { Label, Title, Input } from "./styles";
+import clsx from 'clsx';
+import { makeStyles } from '@material-ui/core/styles';
+import FormControl from '@material-ui/core/FormControl';
+import { Search, Input } from "./styles";
 
 
-const Filter = ({ onChange }) => (
-    <Label>
-        <Title>Find contacts by name:</Title>
-        <Input type="text" onChange={({ target: { value } }) => onChange(value)} />
-    </Label>
-)
+const Filter = () => {
+    const dispatch = useDispatch()
+    const useStyles = makeStyles((theme) => ({
+        root: {
+            display: 'flex',
+            flexWrap: 'wrap',
+        },
+        margin: {
+            margin: theme.spacing(1),
+        },
+        withoutLabel: {
+            marginTop: theme.spacing(3),
+        },
+        textField: {
+            width: '50ch',
+        },
+    }));
+  
+    const classes = useStyles();
+    return (
+        <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
+            <Input
+                id="outlined-basic"
+                label="Search"
+                type="text"
+                variant="outlined"
+                onChange={({ target: { value } }) => dispatch(filterContacts(value))}
+            />
+            <Search />
+        </FormControl>
+    );
+};
 
-Filter.propTypes = {
-    onChange: PropTypes.func.isRequired,
-}
-
-const mapStateToProps = state => ({
-    filter: getFilter(state)
-});
-
-const mapDispatchToProps = dispatch => ({
-    onChange: filter => dispatch(filterContacts(filter))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Filter);
+export default Filter;

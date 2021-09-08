@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 import InputMask from "react-input-mask";
-// import { ReactComponent as AddIcon } from '../../images/accept.svg';
-// import Accept from "../../images/accept.svg";
 
 export const ContactForm = styled.form`
   display: flex;
@@ -32,9 +30,17 @@ export const Input = styled.input`
 
 export const StyledInputMask = styled(InputMask)`
   width: 300px;
+  position: absolute;
+  bottom: 2px;
+  left: 2px;
   padding: 10px 20px;
   font-size: 16px;
   border-radius: 5px;
+  border: none;
+
+  &:hover, &:focus {
+    outline: none;
+  }
 `;
 
 export const Subtitle = styled.span`

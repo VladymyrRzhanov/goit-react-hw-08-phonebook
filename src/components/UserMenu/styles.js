@@ -1,4 +1,10 @@
 import styled from 'styled-components';
+import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
+
+export const Logout = styled(ExitToAppOutlinedIcon)`
+color: rgb(51 147 216);
+cursor: pointer;
+`;
 
 export const Container = styled.div`
 display: flex;
@@ -27,4 +33,5 @@ margin-right: 10px;
 export const WelcomeText = styled.p`
 font-weight: 500;
 font-size: 16px;
+margin-right: 10px;
 `

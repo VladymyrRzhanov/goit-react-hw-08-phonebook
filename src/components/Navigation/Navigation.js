@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
-import { List, Item, CustomLink } from './styles';
 import { getIsLoggeIn } from "redux/authUser/authUser-selector";
+import { List, Item, CustomLink } from './styles';
 
 
 const Navigation = () => {
@@ -9,20 +9,13 @@ const Navigation = () => {
         <nav>
             <List>
                 <Item>
-                    <CustomLink to='/' exact>
-                        Home
-                    </CustomLink>
-                </Item>
-                <Item>
                     {isLoggedIn && (
                         <CustomLink to='/contacts' exact>
-                            Contacts
+                            Phonebook
                         </CustomLink>)
                     }
                 </Item>
             </List>
-            
-            
         </nav>
     );
 };

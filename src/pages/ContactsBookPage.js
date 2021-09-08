@@ -14,13 +14,14 @@ const ContactsBookPage = ({ contacts }) => {
     return (
         <PageContainer>
             <Form />
-            <CSSTransition
+                <CSSTransition
                 in={contacts.length > 1}
                 classNames={pop}
                 timeout={500}
                 unmountOnExit
             >
                 <Filter />
+                
             </CSSTransition>
             <CSSTransition
                 in={!!contacts.length}

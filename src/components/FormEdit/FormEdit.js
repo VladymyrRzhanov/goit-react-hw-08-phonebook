@@ -1,37 +1,60 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from "react-redux";
 import { itemsOperations } from "redux/contacts/items";
-import { ContactForm, InputContainer, Subtitle, Input, Button, BtnText,StyledInputMask } from "./styles";
+import clsx from 'clsx';
+import { makeStyles } from '@material-ui/core/styles';
+import FormControl from '@material-ui/core/FormControl';
+import TextField from '@material-ui/core/TextField';
+import EditIcon from '@material-ui/icons/Edit';
+import { ContactForm, Button, BtnText,StyledInputMask } from "./styles";
 
-const FormEdit = ({userName, userNumber, userId, onClose}) => {
-    const dispatch = useDispatch();
-    const [name, setName] = useState('');
-    const [number, setNumber] = useState('');
+const FormEdit = ({ userName, userNumber, userId, onClose }) => {
+  const dispatch = useDispatch();
+  const [name, setName] = useState('');
+  const [number, setNumber] = useState('');
+  
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      display: 'flex',
+      flexWrap: 'wrap',
+    },
+    margin: {
+      margin: theme.spacing(1),
+    },
+    withoutLabel: {
+      marginTop: theme.spacing(3),
+    },
+    textField: {
+      width: '50ch',
+    },
+  }));
+  
+  const classes = useStyles();
 
-    useEffect(() => {
-        setName(userName);
-        setNumber(userNumber)
-    }, [userName, userNumber])
+  useEffect(() => {
+    setName(userName);
+    setNumber(userNumber)
+  }, [userName, userNumber])
 
-    const handleInputChange = ({ target: { name, value } }) => {
-        switch (name) {
-            case 'name':
-                setName(value);
-                break;
-            case 'number':
-                setNumber(value);
-                break;
-            default:
-                return;
-        };
+  const handleInputChange = ({ target: { name, value } }) => {
+    switch (name) {
+      case 'name':
+        setName(value);
+        break;
+      case 'number':
+        setNumber(value);
+        break;
+      default:
+        return;
     };
+  };
 
-    const handleSubmit = e => {
-        e.preventDefault();
-        dispatch(itemsOperations.editContact({userId, name, number}));
-        reset();
-        onClose()
-    };
+  const handleSubmit = e => {
+    e.preventDefault();
+    dispatch(itemsOperations.editContact({ userId, name, number }));
+    reset();
+    onClose()
+  };
 
 
   const reset = () => {
@@ -39,36 +62,49 @@ const FormEdit = ({userName, userNumber, userId, onClose}) => {
     setNumber('');
   };
 
-    return (
-        <ContactForm onSubmit={handleSubmit}>
-            <InputContainer>
-          <Subtitle>Name</Subtitle>
-          <Input
-            type="text"
-            name="name"
-            value={name}
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
-            required
-            autoComplete='off'
-            onChange={handleInputChange}
-          />
-        </InputContainer>
-        <InputContainer>
-          <Subtitle>Number</Subtitle>
-          <StyledInputMask
-            mask="+99(999)999-99-99"
-            type="tel"
-            name="number"
-            value={number}
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
-            required
-            onChange={handleInputChange} />
-        </InputContainer>
-            <Button type="submit"><BtnText>Edit</BtnText></Button>
-        </ContactForm>
-    );
+  return (
+    <ContactForm onSubmit={handleSubmit}>
+      <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
+        <TextField
+          label="Name"
+          type="text"
+          autoComplete="off"
+          name="name"
+          value={name}
+          variant="outlined"
+          required
+          onChange={handleInputChange}
+        />
+      </FormControl>
+      <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
+        <TextField
+          label="Phone"
+          type="tel"
+          name="number"
+          value={number}
+          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
+          variant="outlined"
+          autoComplete="off"
+          required
+          onChange={handleInputChange}
+        />
+        <StyledInputMask
+          label="Phone"
+          mask="+99(999)999-99-99"
+          type="tel"
+          autoComplete="off"
+          name="number"
+          value={number}
+          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
+          required
+          variant="outlined"
+          onChange={handleInputChange} />
+      </FormControl>
+      <Button type="submit"><BtnText>Edit contact</BtnText><EditIcon width="32" height="32" /></Button>
+    </ContactForm>
+  );
 };
 
 export default FormEdit;

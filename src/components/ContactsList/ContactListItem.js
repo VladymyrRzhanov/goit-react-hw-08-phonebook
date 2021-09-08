@@ -22,7 +22,7 @@ const ContactListItem = ({ onDelete, name, number, id }) => {
       <Item>
         <ItemContainer>
           <BtnDelete type="button" onClick={onDelete}>Delete X</BtnDelete>
-          <BtnEdit type="button" onClick={toggleModal}>Edit</BtnEdit>
+          <BtnEdit onClick={toggleModal}/>
           <Data>
             <span>{name}:</span>
             <span>{number}</span>

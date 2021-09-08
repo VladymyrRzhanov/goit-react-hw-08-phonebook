@@ -6,7 +6,7 @@ const Logo = () => {
             <CustomLink to='/'>
                 <LogoContainer>
                     <Icon />
-                    Phonebook
+                    Home
                 </LogoContainer>
             </CustomLink>
         </Title>

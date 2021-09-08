@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
 export const Container = styled.div`
   width: 70%;
@@ -40,16 +42,11 @@ export const Data = styled.div`
   }
 `;
 
-export const BtnDelete = styled.button`
+export const BtnDelete = styled(DeleteForeverIcon)`
   position: absolute;
   right: 20px;
-  padding: 7px 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: rgb(51 147 216);
   cursor: pointer;
-  color: #fff;
-  font-weight: 700;
+  color: rgb(51 147 216);
   transition: 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
   &:hover {
@@ -65,16 +62,11 @@ export const BtnDelete = styled.button`
   }
 `;
 
-export const BtnEdit = styled.button`
+export const BtnEdit = styled(EditIcon)`
   position: absolute;
-  right: 110px;
-  padding: 7px 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: rgb(51 147 216);
+  right: 60px;
+  color: rgb(51 147 216);
   cursor: pointer;
-  color: #fff;
-  font-weight: 700;
   transition: 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
   &:hover {

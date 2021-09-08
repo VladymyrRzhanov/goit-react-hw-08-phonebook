@@ -22,7 +22,7 @@ export const InputContainer = styled.label`
   width: 100%;
 `;
 
-export const Input = styled.input`
+export const InputStyle = styled.input`
   width: 300px;
   padding: 10px 20px;
   font-size: 16px;
